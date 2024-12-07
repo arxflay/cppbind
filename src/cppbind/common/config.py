@@ -26,10 +26,12 @@ clang_lib = find_library('libclang')
 
 # find clang for linux
 if clang_lib is None:
-    for version in range(13, 5, -1):
+    for version in range(19, 5, -1):
         clang_lib = find_library(f'clang-{version}')
         if clang_lib:
             break
+    if clang_lib is None: # most distros have version after name
+        clang_lib = find_library("clang") 
 
 if clang_lib is None:
     print("clang dev is not installed. Please read README.md")
