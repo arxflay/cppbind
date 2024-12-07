@@ -186,7 +186,7 @@ def run_package():
 
     if current_sub_parser_args[0].profile:
         profiler.enable()
-    if current_sub_parser_args and current_sub_parser_args[1][0] == 'run':
+    if current_sub_parser_args and len(current_sub_parser_args[1]) != 0 and current_sub_parser_args[1][0] == 'run':
         ctx_desc = ContextDescriptor(getattr(default_config.application, 'context_def_glob', None))
         all_languages = ctx_desc.get_deduced_languages()
 
